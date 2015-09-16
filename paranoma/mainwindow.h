@@ -3,7 +3,8 @@
 
 #include <QMainWindow>
 #include <QListWidget>
-//#include <QListWidgetItem>
+#include <QGLWidget>
+#include "glviewwidget.h"
 
 namespace Ui {
 class MainWindow;
@@ -33,6 +34,8 @@ private slots:
 
 private:
     Ui::MainWindow *ui;
+    QGLWidget * qglw;
+    GLViewWidget* glview;
 };
 
 #endif // MAINWINDOW_H

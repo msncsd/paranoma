@@ -1,17 +1,36 @@
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
+#include "QGLWidget"
 #include <QMessageBox>
 #include <QFileDialog>
 #include <QLabel>
 #include <QDebug>
 #include <QListWidget>
 #include <QListWidgetItem>
+#include <QGLWidget>
+#include <QPushButton>
+#include <QVBoxLayout>
 
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
     ui(new Ui::MainWindow)
 {
    ui->setupUi(this);
+
+  // qglw = new QGLWidget();
+  // ui->panoViewer->addWidget(qglw);
+
+
+   glview = new GLViewWidget();
+   ui->panoViewer->addWidget(glview);
+
+   QVBoxLayout *lay = new QVBoxLayout(this);
+
+   for(int i =0;i<15;i++){
+       QPushButton *btn = new QPushButton("Hello");
+       lay->addWidget(btn);
+   }
+   ui->scrollAreaWidgetContents->setLayout(lay);
 
 }
 

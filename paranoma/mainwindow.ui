@@ -18,9 +18,9 @@
     <property name="geometry">
      <rect>
       <x>10</x>
-      <y>22</y>
+      <y>10</y>
       <width>51</width>
-      <height>31</height>
+      <height>51</height>
      </rect>
     </property>
     <property name="toolTip">
@@ -35,7 +35,7 @@
      <rect>
       <x>20</x>
       <y>80</y>
-      <width>201</width>
+      <width>71</width>
       <height>361</height>
      </rect>
     </property>
@@ -43,10 +43,10 @@
    <widget class="QPushButton" name="delBtn">
     <property name="geometry">
      <rect>
-      <x>70</x>
-      <y>20</y>
-      <width>71</width>
-      <height>23</height>
+      <x>60</x>
+      <y>10</y>
+      <width>81</width>
+      <height>51</height>
      </rect>
     </property>
     <property name="toolTip">
@@ -72,8 +72,8 @@
    <widget class="QPushButton" name="conBtn">
     <property name="geometry">
      <rect>
-      <x>80</x>
-      <y>50</y>
+      <x>220</x>
+      <y>0</y>
       <width>121</width>
       <height>23</height>
      </rect>
@@ -165,9 +165,9 @@
     <property name="geometry">
      <rect>
       <x>249</x>
-      <y>99</y>
+      <y>369</y>
       <width>551</width>
-      <height>321</height>
+      <height>51</height>
      </rect>
     </property>
     <property name="autoFillBackground">
@@ -199,6 +199,40 @@
     <property name="text">
      <string>Select</string>
     </property>
+   </widget>
+   <widget class="QWidget" name="verticalLayoutWidget">
+    <property name="geometry">
+     <rect>
+      <x>249</x>
+      <y>109</y>
+      <width>511</width>
+      <height>251</height>
+     </rect>
+    </property>
+    <layout class="QVBoxLayout" name="panoViewer"/>
+   </widget>
+   <widget class="QScrollArea" name="scrollArea">
+    <property name="geometry">
+     <rect>
+      <x>100</x>
+      <y>80</y>
+      <width>131</width>
+      <height>351</height>
+     </rect>
+    </property>
+    <property name="widgetResizable">
+     <bool>true</bool>
+    </property>
+    <widget class="QWidget" name="scrollAreaWidgetContents">
+     <property name="geometry">
+      <rect>
+       <x>0</x>
+       <y>0</y>
+       <width>129</width>
+       <height>349</height>
+      </rect>
+     </property>
+    </widget>
    </widget>
   </widget>
   <widget class="QMenuBar" name="menuBar">
