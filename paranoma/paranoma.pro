@@ -16,12 +16,14 @@ SOURCES += main.cpp\
         mainwindow.cpp \
     frame.cpp \
     framelist.cpp \
-    glviewwidget.cpp
+    glviewwidget.cpp \
+    framelabel.cpp
 
 HEADERS  += mainwindow.h \
     frame.h \
     framelist.h \
-    glviewwidget.h
+    glviewwidget.h \
+    framelabel.h
 
 FORMS    += mainwindow.ui
 

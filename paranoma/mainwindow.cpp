@@ -1,6 +1,7 @@
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
 #include "QGLWidget"
+#include "framelabel.h"
 #include <QMessageBox>
 #include <QFileDialog>
 #include <QLabel>
@@ -10,6 +11,8 @@
 #include <QGLWidget>
 #include <QPushButton>
 #include <QVBoxLayout>
+#include <QIcon>
+#include <QLabel>
 
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
@@ -20,17 +23,18 @@ MainWindow::MainWindow(QWidget *parent) :
   // qglw = new QGLWidget();
   // ui->panoViewer->addWidget(qglw);
 
-
+   // add custom glwidget
    glview = new GLViewWidget();
    ui->panoViewer->addWidget(glview);
 
-   QVBoxLayout *lay = new QVBoxLayout(this);
+   // add scroll layout contents
+   lay = new QVBoxLayout(this);
 
-   for(int i =0;i<15;i++){
-       QPushButton *btn = new QPushButton("Hello");
-       lay->addWidget(btn);
-   }
-   ui->scrollAreaWidgetContents->setLayout(lay);
+  // for(int i =0;i<15;i++){
+//       QPushButton *btn = new QPushButton("Hello");
+//       lay->addWidget(btn);
+  // }
+   //ui->scrollAreaWidgetContents->setLayout(lay);
 
 }
 
@@ -54,8 +58,8 @@ void MainWindow::on_addBtn_clicked()
     QString filepath = QFileDialog::getOpenFileName(
                 this,
                 tr("Add Images"),
-                "C://", //===파일 다이얼로그가 열리는 위치.. 임시로 아래 위치를 이용함
-                //"C://Users//godori//img//",
+                //"C://", //===파일 다이얼로그가 열리는 위치.. 임시로 아래 위치를 이용함
+                "C://Users//",
                 "All files(*.*);;Image File(*.png);;Image File(*.jpg);;Image File(*.bmp)"
                 );
 
@@ -74,6 +78,28 @@ void MainWindow::on_addBtn_clicked()
         ui->frameList->addItem(filename);   // 파일이름 리스트에 추가
         ui->path->setText(filepath);        // 파일 패스 확인
         qDebug() <<"added filepath : "+filepath;
+
+        // (임시)리스트에 버튼을 추가
+        QPushButton *btn = new QPushButton();
+        btn->setFlat(true);
+
+        QPixmap *mypix = new QPixmap();
+         *mypix = QPixmap::fromImage(image);
+
+        frameLabel *flabel = new frameLabel();
+        flabel->setPixmap(*mypix);
+        flabel->setFixedWidth(100);
+        flabel->setFixedHeight(60);
+
+        //QVBoxLayout frameThumb = new QVBoxLayout(this);
+
+       // QLabel namelabel(filename);//= new QLabel(filename);
+
+        lay->addWidget(flabel);
+       // lay->addWidget(namelabel);
+        //lay->addItem(namelabel);
+        ui->scrollAreaWidgetContents->setLayout(lay);
+
 
     }
 

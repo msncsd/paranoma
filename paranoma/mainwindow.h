@@ -4,6 +4,7 @@
 #include <QMainWindow>
 #include <QListWidget>
 #include <QGLWidget>
+#include <QVBoxLayout>
 #include "glviewwidget.h"
 
 namespace Ui {
@@ -36,6 +37,7 @@ private:
     Ui::MainWindow *ui;
     QGLWidget * qglw;
     GLViewWidget* glview;
+    QVBoxLayout *lay;
 };
 
 #endif // MAINWINDOW_H

@@ -40,22 +40,6 @@
      </rect>
     </property>
    </widget>
-   <widget class="QPushButton" name="delBtn">
-    <property name="geometry">
-     <rect>
-      <x>60</x>
-      <y>10</y>
-      <width>81</width>
-      <height>51</height>
-     </rect>
-    </property>
-    <property name="toolTip">
-     <string>개별 프레임을 삭제합니다</string>
-    </property>
-    <property name="text">
-     <string>Delete</string>
-    </property>
-   </widget>
    <widget class="QLabel" name="label">
     <property name="geometry">
      <rect>
@@ -233,6 +217,22 @@
       </rect>
      </property>
     </widget>
+   </widget>
+   <widget class="QPushButton" name="delBtn">
+    <property name="geometry">
+     <rect>
+      <x>60</x>
+      <y>0</y>
+      <width>81</width>
+      <height>61</height>
+     </rect>
+    </property>
+    <property name="toolTip">
+     <string>개별 프레임을 삭제합니다</string>
+    </property>
+    <property name="text">
+     <string>Delete</string>
+    </property>
    </widget>
   </widget>
   <widget class="QMenuBar" name="menuBar">
