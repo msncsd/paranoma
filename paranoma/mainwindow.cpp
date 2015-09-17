@@ -204,7 +204,7 @@ void MainWindow::on_siftBtn_clicked()
         painter.setBrush(b);
         painter.drawRect(30,30,500,500);
 
-                //p->drawLine(pix.rect().topLeft(),pix.rect().bottomRig ht());
+       //p->drawLine(pix.rect().topLeft(),pix.rect().bottomRig ht());
 
             ui->preview->setPixmap(*mypix);
 //flabel->setPixmap(*mypix);
