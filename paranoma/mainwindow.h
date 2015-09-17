@@ -5,7 +5,9 @@
 #include <QListWidget>
 #include <QGLWidget>
 #include <QVBoxLayout>
+#include <QVector>
 #include "glviewwidget.h"
+#include "frame.h"
 
 namespace Ui {
 class MainWindow;
@@ -33,11 +35,18 @@ private slots:
 
     void on_selectBtn_clicked();
 
+    void handleButton();
+
+    void moveScrollBarToBottom(int min, int max);
+
+    void on_selectBtn_toggled(bool checked);
+
 private:
     Ui::MainWindow *ui;
     QGLWidget * qglw;
     GLViewWidget* glview;
     QVBoxLayout *lay;
+    QVector<Frame> frameList;
 };
 
 #endif // MAINWINDOW_H

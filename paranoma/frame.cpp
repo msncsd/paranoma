@@ -7,3 +7,22 @@ Frame::Frame()
 
 }
 
+void Frame::setFilePath(QString filepath){
+
+    this->filepath = filepath;
+}
+
+void Frame::setFileName(QString filename){
+
+    this->filename = filename;
+
+}
+
+
+QString Frame::getFileName(){
+    return this->filename;
+}
+
+QString Frame::getFilePath(){
+    return this->filepath;
+}
