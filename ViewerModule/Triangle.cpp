@@ -16,7 +16,7 @@ Triangle::Triangle( QOpenGLShaderProgram *program,
     initVertices();
     initTextureCoord();
     //initColors();
-    QString filepath = "/Users/koeunjeong/Documents/06.jpeg";
+    QString filepath = "/Users/koeunjeong/Documents/01.PNG";
     QImage image(filepath);
      m_texture = new QOpenGLTexture( image);//QImage( ":/Textures/Blocks.jpg" ) );
 }
