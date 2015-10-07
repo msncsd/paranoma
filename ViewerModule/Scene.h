@@ -23,7 +23,8 @@ private:
     QOpenGLShaderProgram m_program;
 
     int m_vertexAttr;
-        //int m_colorAttr;
+    int m_cylinderAttr;
+    int m_colorAttr;
     int m_textureAttr;
     int m_matrixUniform;
     int m_textureUniform;

@@ -15,11 +15,14 @@ TEMPLATE = app
 SOURCES += main.cpp\
         Dialog.cpp \
     Scene.cpp \
-    Triangle.cpp
+    Triangle.cpp \
+    Cylinder.cpp
 
 HEADERS  += Dialog.h \
     Scene.h \
-    Triangle.h
+    Triangle.h \
+    Cylinder.h \
+    SceneObject.h
 
 FORMS    += Dialog.ui
 

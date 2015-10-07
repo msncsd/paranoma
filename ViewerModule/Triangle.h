@@ -10,8 +10,11 @@ class Triangle
 public:
     // 프로그램 포인터, 버텍스,컬러 attr값 + 추가부분 : 텍스쳐
     Triangle( QOpenGLShaderProgram *program,
-              int vertexAttr, int textureAttr, //,int colorAttr,
-              int textureUniform );
+              int vertexAttr,
+              //int cylinderAttr,
+              // int textureAttr,
+              //int textureUniform
+               int colorAttr);
     ~Triangle();
 
     void draw();
@@ -24,22 +27,24 @@ public:
 
 private:
     void initVertices();
-        //void initColors();
+    void initVertices2();
+    void initColors();
     void initTextureCoord();    // 텍스쳐 코드 이닛
 
     std::vector<float> m_vertices;  // vertices 값 벡터
+    std::vector<float> m_cylinder;
     std::vector<float> m_textureCoodrs;
-    //std::vector<float> m_colors;
-
+    std::vector<float> m_colors;
 
     QOpenGLShaderProgram *m_program;    // 쉐이더 프로그램 객체
     QOpenGLTexture *m_texture;          // 추가부분 : 텍스쳐 객체
 
     // 쉐이더 애트리뷰트들
     int m_vertexAttr;
+    int m_cylinderAttr;
     int m_colorAttr;
     int m_textureAttr;
-    int m_textureUniform; // 추가부분 : 텍스쳐
+    int m_textureUniform;
 
     // 추가부분 : 키보드
     float m_x0;
