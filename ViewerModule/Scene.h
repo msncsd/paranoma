@@ -18,6 +18,7 @@ private:
     void resizeGL( int w, int h );
 
     void keyPressEvent( QKeyEvent *event );
+    float x,y,z,w;
 
     Triangle *m_triangle;
     QOpenGLShaderProgram m_program;
@@ -28,6 +29,7 @@ private:
     int m_textureAttr;
     int m_matrixUniform;
     int m_textureUniform;
+    int m_cameraUniform;
 };
 
 #endif // SCENE_H

@@ -1,4 +1,8 @@
 #include <QMatrix4x4>
+#include <QVector>
+#include <cmath>
+#include <Qvector4D>
+#include <QDebug>
 #include "Scene.h"
 #include "Cylinder.h"
 #include "SceneObject.h"
@@ -6,7 +10,12 @@
 #include "glu.h"
 
 Scene::Scene( QWidget *parent ) :
-    QOpenGLWidget( parent )
+    QOpenGLWidget( parent ),
+    x(1.0),
+    y(1.0),
+    z(0.0),
+    w(1.0)
+    //1.0,0.5,0.1,1.0
 {
     this->setFocusPolicy(Qt::StrongFocus);
 }
@@ -46,6 +55,7 @@ void Scene::initializeGL()
     //m_textureAttr = m_program.attributeLocation( "textureAttr" );
     m_colorAttr = m_program.attributeLocation( "colorAttr" );
     m_matrixUniform = m_program.uniformLocation( "matrix" );
+    m_cameraUniform = m_program.uniformLocation("camera");
 
     // 텍스쳐
     //m_textureUniform = m_program.uniformLocation( "textureUniform" );
@@ -63,21 +73,72 @@ void Scene::paintGL()
     // 프로그램 바인드
     m_program.bind();
 
+    // Matrix 설정
     QMatrix4x4 matrix;
-                // left, right,bottom, top, nearPlane, farPlane
-    matrix.ortho( -2.0f, 2.0f, -3.0f, 2.0f, 2.0f, -3.0f );
+    matrix.ortho( -2.0f, 2.0f, -3.0f, 2.0f, 2.0f, -3.0f ); // left, right,bottom, top, nearPlane, farPlane
     matrix.translate( 0.0f, 0.0f, -2.0f );
+
+    QVector4D cameraVec;
+    cameraVec = QVector4D(x,y,z,w);
 
     // 주어진 사이즈의(parm2 : Qsize) 현재 컨텍스트에 이 유니폼 값을 설정함
     m_program.setUniformValue( m_matrixUniform, matrix );
+    m_program.setUniformValue(m_cameraUniform, cameraVec);
 
     // 그리기
     m_triangle->draw();
 
-    glBegin(GL_POLYGON);
+
+   // static double deg=0.0;
+//    glClearColor (0.0, 0.0, 0.0, 0.0);
+//       glMatrixMode(GL_PROJECTION);
+//       glLoadIdentity();
+//       glOrtho(0.0, 1.0, 0.0, 1.0, -1.0, 1.0);
+//       glMatrixMode(GL_MODELVIEW);
+//       glLoadIdentity();
+
+//    glClear (GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT); //뒤의 것 싹 지워버림
+//    glPushMatrix();
+
+//    glRotatef(deg, 0.0, 0.0, 1.0); //angle
+   // glColor3f (0.0, 0.5, 0.0);
+
+    //QVector3D *xxx = new QVector3D(1.0,0.0,0.0);
+    //std::vector<float> m_vertices;
+
+
+
+//    glBegin(GL_POLYGON); //GL_POLYGON //GL_LINE_STRIP
+//    glVertex3f (0, 0, 0.0);
+//        glVertex3f (1, 0, 0.0);
+//        glVertex3f (1, 0.75, 0.0);
+//        glVertex3f (0.8, 0.82, 0.0);
+//        glVertex3f (0.6, 0.85, 0.0);
+//        glVertex3f (0.4, 0.85, 0.0);
+//        glVertex3f (0.2, 0.82, 0.0);
+//          glVertex3f (0.0, 0.75, 0.0);
+//        glEnd();
+
+//    glClear(GL_COLOR_BUFFER_BIT);
+//    glLoadIdentity();
+     //gluLookAt (2.0, 0.0, 5.0, 0.0, 0.0, 0.0, 0.0, 1.0, 0.0);
+    glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT); // Clear The Screen And The Depth Buffer
+    glLoadIdentity();
+    glTranslatef(-1.5f,0.0f,-6.0f);
+    glBegin(GL_TRIANGLES); //GL_TRIANGLES //GL_TRIANGLES
+
+    glColor3f(1.0f,0.0f,0.0f);          // Red
+    glVertex3f( 0.0f, 1.0f, 0.0f);          // Top Of Triangle (Front)
+    glColor3f(0.0f,1.0f,0.0f);          // Green
+    glVertex3f(-1.0f,-1.0f, 1.0f);          // Left Of Triangle (Front)
+    glColor3f(0.0f,0.0f,1.0f);          // Blue
+    glVertex3f( 1.0f,-1.0f, 1.0f);
+    glEnd();
+    glBegin(GL_LINE_STRIP);
     GLUquadric *obj = gluNewQuadric();
-   // gluCylinder(obj, 1.0, 1.0, 0.4, 30, 16);
-    //gluCylinder(obj, 1.0, 1, 10, 10, 30); // quad ,base, top, height, slice, stacks
+    //gluQuadricDrawStyle( obj, GLU_LINE );
+    //glRotatef(90.0f, 0.0f, 1.0f, 0.0f);
+    gluCylinder(obj, 1, 1, 2, 30, 1); //(GLUquadric*, base, top, height, slices, stacks);
     glEnd();
 
     //프로그램 객체 릴리즈
@@ -96,15 +157,23 @@ void Scene::keyPressEvent(QKeyEvent *event){
     switch( event->key() )
     {
         case Qt::Key_Up:
+            y = y+0.2;
+            qDebug()<<"x y z w : "<<x<<" "<<y<<" "<<z<<" "<<w;
             m_triangle->setY0( m_triangle->y0() + step );
             break;
         case Qt::Key_Left:
+            x= x+0.2;
+            qDebug()<<"x y z w : "<<x<<" "<<y<<" "<<z<<" "<<w;
             m_triangle->setX0( m_triangle->x0() - step );
             break;
         case Qt::Key_Down:
+            y = y-0.2;
+            qDebug()<<"x y z w : "<<x<<" "<<y<<" "<<z<<" "<<w;
             m_triangle->setY0( m_triangle->y0() - step );
             break;
         case Qt::Key_Right:
+            x = x-0.2;
+            qDebug()<<"x y z w : "<<x<<" "<<y<<" "<<z<<" "<<w;
             m_triangle->setX0( m_triangle->x0() + step );
             break;
     }

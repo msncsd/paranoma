@@ -71,7 +71,7 @@ void Triangle::draw()
 void Triangle::initVertices2()
 {
     // 벡터의 새 크기 지정
-    m_cylinder.resize(9);
+    m_cylinder.resize(18);
 
     // 0
     m_cylinder[0] = 0.0f;
@@ -87,6 +87,49 @@ void Triangle::initVertices2()
     m_cylinder[6] = 0.0f;
     m_cylinder[7] = 1.0f;
     m_cylinder[8] = 0.0f;
+
+
+    // 4
+    m_cylinder[9] = 0.0f;
+    m_cylinder[10] = 0.0f;
+    m_cylinder[11] = 0.0f;
+    // 5
+    m_cylinder[12] = 1.0f;
+    m_cylinder[13] = 0.0f;
+    m_cylinder[14] = 0.0f;
+    // 6
+    m_cylinder[15] = -1.0f;
+    m_cylinder[16] = -1.0f;
+    m_cylinder[17] = 0.0f;
+
+//    // 4
+//    m_cylinder[9] = 1.0f;
+//    m_cylinder[10] = 0.0f;
+//    m_cylinder[11] = 0.0f;
+
+//    // 5
+//    m_cylinder[12] = 0.0f;
+//    m_cylinder[13] = 1.0f;
+//    m_cylinder[14] = 0.0f;
+//    // 6
+//    m_cylinder[15] = 1.0f;
+//    m_cylinder[16] = 1.0f;
+//    m_cylinder[17] = 0.0f;
+
+
+//    // 7
+//    m_cylinder[18] = 0.0f;
+//    m_cylinder[19] = 0.0f;
+//    m_cylinder[20] = 0.0f;
+
+//    // 8
+//    m_cylinder[21] = 0.0f;
+//    m_cylinder[22] = 1.0f;
+//    m_cylinder[23] = 0.0f;
+//    // 9
+//    m_cylinder[24] = 1.0f;
+//    m_cylinder[25] = 1.0f;
+//    m_cylinder[26] = 0.0f;
 }
 
 
@@ -113,7 +156,7 @@ void Triangle::initVertices()
 
 void Triangle::initColors()
 {
-    m_colors.resize( 9 );
+    m_colors.resize( 30 );
 
     // 0
     m_colors[0] = 1.0f;
@@ -122,13 +165,14 @@ void Triangle::initColors()
 
     // 1
     m_colors[3] = 0.0f;
-    m_colors[4] = 0.0f;
+    m_colors[4] = 1.0f; // green
     m_colors[5] = 0.0f;
 
     // 2
     m_colors[6] = 0.0f;
     m_colors[7] = 0.0f;
-    m_colors[8] = 0.0f;
+    m_colors[8] = 1.0f; // blue
+
 }
 
 void Triangle::initTextureCoord()
